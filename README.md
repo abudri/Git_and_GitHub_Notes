@@ -13,7 +13,7 @@ As stated in the **[official announcement](https://github.blog/2013-07-02-relea
 
 A `Release` is created from an existing `tag` and exposes release notes and links to download the software or source code from GitHub.
 
-Reference for the above: https://stackoverflow.com/questions/18506508/whats-the-difference-between-tag-and-release
+[Reference](https://stackoverflow.com/questions/18506508/whats-the-difference-between-tag-and-release) 
 
 ### [Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
 
@@ -110,4 +110,5 @@ And on your repo's home page:
 ### Resources
 
 https://semver.org/
+
 https://git-scm.com/book/en/v2/Git-Basics-Tagging
