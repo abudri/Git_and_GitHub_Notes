@@ -71,6 +71,8 @@ That shows the tagger information, the date the commit was tagged, and the annot
 
 You will want to make your PR first.  Once you have finished any changes/commits in the PR, and you are ready to merge, then locally you can create the tags (or even in the GitHub UI) and _then_ you can **merge** the branch into `main`.  Also, if your change is so significant that it is breaking, then bump the version to the next version, meaning from say `1.2` to `2.0`. Also, as of now, when you push your tags from local to the remote repo, **the release is automatically created from the tag**, so no work needed from you there.
 
+Also, please note that a pull request does not _include_ tags. You work with them separate. [Reference](https://stackoverflow.com/questions/12278660/adding-tags-to-a-pull-request)
+
 1. Recall from the above, at this point your PR is ready to be merged with `main`.  At this point, locally, tag your latest commit, such as `git tag -a v1.0 -m "first version"`:
 ```bash
 $ git tag -a v1.4 -m "my version 1.4"
