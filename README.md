@@ -114,3 +114,152 @@ And on your repo's home page:
 https://semver.org/
 
 https://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+## How to Do a Pull Request
+
+1. `git add -A` - add all your changes
+2. `git commit -m "message about your changes"` - do your typically commit locally
+3. `git push -u origin new-feature` -  where `new-feature` is your new branch you made locally. Do this command from the issue branch - aka the new or feature branch - you are currently on.
+4. Then follow the steps in the article: **[How to create a pull request in GitHub](https://opensource.com/article/19/7/create-pull-request-github)**
+
+Once you push the changes to your repo, the Compare & pull request button will appear in GitHub.
+
+<img src="https://user-images.githubusercontent.com/17362519/115149964-5df4cd00-a034-11eb-83a9-96aa2367f4d6.png" width="550;" />
+
+**Click it** and you'll be taken to this screen:
+
+<img src="https://user-images.githubusercontent.com/17362519/115149988-7cf35f00-a034-11eb-8918-7e791170c8ce.png" width="550;" />
+
+5. Open a pull request by clicking the **Create pull request** button. This allows the repo's maintainers to review your contribution. From here, they can merge it if it is good, or they may ask you to make some changes.
+
+Note: you don't have to create the branch on the remote repo, if you do a push of your local branch to the remote repo, the remote repo on github will refresh with your new feature branch you just pushed from local, like `git push origin new-feature`, and github will automatically refresh with `new-feature` showing up on it's site.
+
+## How to Remove Sensitive Commits From a Repository
+
+One issue that may come up is committing secrets or senstive data locally and/or remotely - such as on GitHub.  There are a number of ways to go about them.  Here are two.
+
+1. GitHub's own documentation on [Removing sensitive data from a repository](https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository). From that doc, here is one method:
+
+#### **[Purging a file from your repository's history](https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository#purging-a-file-from-your-repositorys-history)**
+
+#####  **[Using the BFG](https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository#using-the-bfg)**
+
+The [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) is a tool that's built and maintained by the open source community. It provides a faster, simpler alternative to `git filter-branch` for removing unwanted data. For example, to remove your file with sensitive data and leave your latest commit untouched, run:
+
+```
+$ bfg --delete-filesYOUR-FILE-WITH-SENSITIVE-DATA
+```
+
+To replace all text listed in `passwords.txt` wherever it can be found in your repository's history, run:
+
+```
+$ bfg --replace-text passwords.txt
+```
+
+After the sensitive data is removed, you must force push your changes to GitHub.
+
+```
+$ git push --force
+```
+
+See the [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)'s documentation for full usage and download instructions.
+
+2. Clear out the **entire** history and all commits from a repository. Chances are this isn't the ideal of what you want to do if option 1 is possible. Steps to clear out the history of a git/github repository
+
+```
+    -- Remove the history from 
+    rm -rf .git
+
+    -- recreate the repos from the current content only
+    git init
+    git add .
+    git commit -m "Initial commit"
+
+    -- push to the github remote repos ensuring you overwrite history
+    git remote add origin git@github.com:<YOUR ACCOUNT>/<YOUR REPOS>.git
+    git push -u --force origin master
+```
+[Source](https://gist.github.com/stephenhardy/5470814)
+
+If you push a commit to a remote repository, the entire history of that commit is also pushed. If you have a commit with secrets in your history, another option is you could also rewrite your history to get rid of it using an interactive rebase before you push it. You could also use git rebase -i and squash all your commits.
+
+## Pulling Down a Remote Branch from Github and *all it's feature branches*
+
+[https://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git](https://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git)
+
+First, clone a remote [Git](http://en.wikipedia.org/wiki/Git_%28software%29) repository and [cd](http://en.wikipedia.org/wiki/Cd_%28command%29) into it:
+
+```
+$ git clone git://example.com/myproject
+$ cd myproject
+```
+
+Next, look at the local branches in your repository:
+
+```
+$ git branch
+* master
+```
+
+But there are other branches hiding in your repository! You can see these using the `-a` flag:
+
+```
+$ git branch -a
+* master
+  remotes/origin/HEAD
+  remotes/origin/master
+  remotes/origin/v1.0-stable
+  remotes/origin/experimental
+```
+
+If you just want to take a quick peek at an upstream branch, you can check it out directly:
+
+```
+$ git checkout origin/experimental
+```
+
+But if you want to work on that branch, you'll need to create a local tracking branch which is done automatically by:
+
+```
+$ git checkout experimental
+```
+
+and you will see
+
+```
+Branch experimental set up to track remote branch experimental from origin.
+Switched to a new branch 'experimental'
+```
+
+Here, "new branch" simply means that the branch is taken from the index and created locally for you. As the *previous* line tells you, the branch is being set up to track the remote branch, which usually means the origin/branch_name branch.
+
+Now, if you look at your local branches, this is what you'll see:
+
+```
+$ git branch
+* experimental
+  master
+```
+
+You can actually track more than one remote repository using `git remote`.
+
+```
+$ git remote add win32 git://example.com/users/joe/myproject-win32-port
+$ git branch -a
+* master
+  remotes/origin/HEAD
+  remotes/origin/master
+  remotes/origin/v1.0-stable
+  remotes/origin/experimental
+  remotes/win32/master
+  remotes/win32/new-widgets
+
+```
+
+At this point, things are getting pretty crazy, so run `gitk` to see what's going on:
+
+```
+$ gitk --all &
+```
+
+
