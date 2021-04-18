@@ -109,11 +109,13 @@ And on your repo's home page:
 
 <img src="https://user-images.githubusercontent.com/17362519/115073481-63340980-9ec6-11eb-959f-6fb28b759d25.png" width="350;" />
 
-### Resources
+#### Resources
 
 https://semver.org/
 
 https://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+[Git and GitHub Beginner Tutorial 7 - Git Tags - what, why, when and how - Raghav Pal](https://www.youtube.com/watch?v=govmXpDGLpo&t=464s)
 
 ## How to Do a Pull Request
 
