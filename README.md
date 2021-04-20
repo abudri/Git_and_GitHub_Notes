@@ -21,7 +21,7 @@ Like most VCSs, Git has the ability to tag specific points in a repository’s h
 
 A tag is a pointer to a specific commit. This pointer can be super charged with some additional information (identity of the creator of the tag, a description, a GPG signature, ...).
 
-#### Commands
+### Commands
 
 **Listing Your Tags**
 Listing the existing tags in Git is straightforward. Just type git tag (with optional -l or --list):
@@ -109,7 +109,17 @@ And on your repo's home page:
 
 <img src="https://user-images.githubusercontent.com/17362519/115073481-63340980-9ec6-11eb-959f-6fb28b759d25.png" width="350;" />
 
-#### Resources
+### Create a Feature Branch in a Repo Based on a Prior Version/Realease: Checking out a Tag/Version Locally and Pushing a feature Branch to the Remote Repo from There
+
+Doesn't appear to be a way to do this in the UI at this time. The easy way is to checkout to the older version locally, and then checkout to a new feature branch, make your changes in that older version code, and then push the feature branch out to the code repo.  So,
+
+```bash
+git checkout v1.1   # whatever the tag/commit is
+git checkout -b my-test-feature-branch
+```
+From there, make changes, commit them, and then push your `my-test-feature-branch` out to the remote repo as is normally done and it should appear in GitHub.
+
+### Resources
 
 https://semver.org/
 
@@ -135,6 +145,56 @@ Once you push the changes to your repo, the Compare & pull request button will a
 5. Open a pull request by clicking the **Create pull request** button. This allows the repo's maintainers to review your contribution. From here, they can merge it if it is good, or they may ask you to make some changes.
 
 Note: you don't have to create the branch on the remote repo, if you do a push of your local branch to the remote repo, the remote repo on github will refresh with your new feature branch you just pushed from local, like `git push origin new-feature`, and github will automatically refresh with `new-feature` showing up on it's site.
+
+## Resolving Merge Conflicts
+
+Say you have a feature branch that needs to get caught up with the `main` branch, if you try to merge master into your feature branch then you may run into merge conflicts that need to be resolved. To be more precise, what is a merge conflict:
+
+> A merge conflict is an event that occurs when Git is unable to automatically resolve differences in code between two commits. When all the changes in the code occur on different lines or in different files, Git will successfully merge commits without your help. However, when there are conflicting changes on the same lines, a “merge conflict” occurs because Git doesn’t know which code to keep and which to discard. [Source](https://blog.axosoft.com/learn-git-merge-conflict/#:~:text=A%20merge%20conflict%20is%20an,merge%20commits%20without%20your%20help.)
+
+Here is a general approach:
+
+```bash
+git pull origin your-feature-branch # this is in the case that you have already pushed your feature branch out to Github and changes have been made to the branch there remotely
+git checkout main  # checkout to the `main` branch
+git pull --rebase origin main  # get updates for `main` before the merge
+git checkout your-feature-branch  # get back to your feature branch
+git merge main  # merge `main` into your feature branch
+```
+From here you may or may not have merge conflicts.  If you do, you will need to resolve them from here. An easy way I've been getting accustomed to is using the VSCode interface. Carmelle Codes actually has a great and concise [video](How to resolve merge conflicts in Visual Studio Code | Fast tutorial 2020
+) on this. 
+
+Firstly, the green text below represents the local branch changes, and the blue text reflects the incoming changes. Since in this case Carmelle wants to be updated with master, she accepts the incoming changes:
+
+<img src="https://user-images.githubusercontent.com/17362519/115415714-236e6a00-a1c5-11eb-90e8-70b389f2c5b1.png" width="400;" />
+
+But in other cases maybe your code is ahead of `main` and you want to keep your local changes, so keep that in mind. So, Carmelle accepted incoming changes from the remote repo, and notes that merge conflict files have the purple **C** next to it:
+
+<img src="https://user-images.githubusercontent.com/17362519/115416090-721c0400-a1c5-11eb-9b86-e9ee7870d811.png" width="400;" />
+
+At this point she has saved the file and then she hits the **+** symbol to stage the changes:
+
+<img src="https://user-images.githubusercontent.com/17362519/115416214-92e45980-a1c5-11eb-9d0a-e9bd4e392ce3.png" width="400;" />
+
+Then she uses `command + enter` on Mac to commit the changes locally:
+
+<img src="https://user-images.githubusercontent.com/17362519/115416312-a8f21a00-a1c5-11eb-95b6-7bc483a9fb79.png" width="400;" />
+
+After that she can `push` all those changes by going to the bottom of the VSCode interface and clicking that circular icon:
+
+<img src="https://user-images.githubusercontent.com/17362519/115416407-c32bf800-a1c5-11eb-8c34-a18af4db0271.png" width="400;" />
+
+And there you go, you resolved the merge conflicts and pushed that update of your feature branch out to the remote repo. Now, your feature branch is up to date with `main` both locally and remotely
+
+If you wanted to do the above via the CLI, then you can simply do the below after keeping your local changes or accepting incoming changes or whatever changes you want to keep, saving the file/s, and then you can do the below via the CLI for the same effect:
+
+```bash
+git add -A
+git commit -m "pull updates from origin main"
+git status  # things are commited locally now after merging `main` into your feature branch
+git push   # push the changes in your feature branch out to the remote
+```
+You should be good from there. 
 
 ## How to Remove Sensitive Commits From a Repository
 
