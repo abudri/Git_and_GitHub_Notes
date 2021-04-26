@@ -129,9 +129,11 @@ https://git-scm.com/book/en/v2/Git-Basics-Tagging
 
 ## How to Do a Pull Request
 
-1. `git add -A` - add all your changes
+This presumes you have already set up your remote repo to link to your local repo - do `git remote -v` to check. Also this presupposes you are currently checked out onto your feature branch that you want to create a pull request for.  
+
+1. `git add -A` - add all your changes as is normal.
 2. `git commit -m "message about your changes"` - do your typically commit locally
-3. `git push -u origin new-feature` -  where `new-feature` is your new branch you made locally. Do this command from the issue branch - aka the new or feature branch - you are currently on.
+3. `git push -u origin new-feature-branch` -  where `new-feature-branch` is your new branch you made locally. Do this command from your local feature branch - meaning, locally you should also be on `new-feature-branch`.
 4. Then follow the steps in the article: **[How to create a pull request in GitHub](https://opensource.com/article/19/7/create-pull-request-github)**
 
 Once you push the changes to your repo, the Compare & pull request button will appear in GitHub.
