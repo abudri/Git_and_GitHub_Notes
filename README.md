@@ -73,7 +73,7 @@ You will want to make your PR first.  Once you have finished any changes/commits
 
 Also, please note that a pull request does not _include_ tags. You work with them separately. [Reference](https://stackoverflow.com/questions/12278660/adding-tags-to-a-pull-request)
 
-1. Recall from the above, at this point your PR is ready to be merged with `main`.  At this point, locally, tag your latest commit, such as `git tag -a v1.0 -m "first version"`:
+1. Recall from the above, at this point your PR is ready to be merged with `main`, but don't merge the PR yet.  At this point, locally, tag your latest commit, such as `git tag -a v1.0 -m "first version"`:
 ```bash
 $ git tag -a v1.4 -m "my version 1.4"
 $ git tag
@@ -81,11 +81,14 @@ v0.1
 v1.3
 v1.4
 ```
+This will tag your latest commit - ie, what you just committed and pushed as a PR to the remote repo.  Meaning, once you push your new tag to the remote repo - step 3 below - that tag will be associated with your current PR.
+
 2. You can then push your tags to the remote repo, and this will push anything that is tagged locally
 ```bash
 git push origin --tags
 ```
-3. When you visit the repository you should now see your tag and a release automatically generated from that tag.  Simple as that.
+
+3. When you visit the repository you should now see your tag and a release automatically generated from that tag.  Simple as that.  Now you can merge your PR if approved.
 
 ### Creating a Tag and Release Through the UI
 
