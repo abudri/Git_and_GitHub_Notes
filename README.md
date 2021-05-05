@@ -250,6 +250,20 @@ See the [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)'s docume
 
 If you push a commit to a remote repository, the entire history of that commit is also pushed. If you have a commit with secrets in your history, another option is you could also rewrite your history to get rid of it using an interactive rebase before you push it. You could also use git rebase -i and squash all your commits.
 
+## Un-doing Your Last Commit
+
+Sometimes you make a mistake and commit to `main` branch.  Ok, maybe it's just me.  Normally, with the team I make a feature branch locally, commit my changes, make the Pull Request, and then wait for teammates to approve, and then finally merge into `main`.  In any case, it's pretty easy to resolve if you've mistakenly committed your changes to `main` before making a PR.  
+
+If you want to move `main` back one commit - prior to your mistaken commmit on `main` - and in addition keep the changes in that make mistake unstaged, just do the below:
+
+```
+$ git reset --soft HEAD~1
+```
+
+You'll see you are back to the last/original state of `main`, and your changes are available now, just uncommitted. Pretty easy and there you go!
+
+[Reference](https://www.git-tower.com/learn/git/faq/undo-last-commit/)
+
 ## Pulling Down a Remote Branch from Github and *all it's feature branches*
 
 [https://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git](https://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git)
