@@ -151,6 +151,29 @@ Once you push the changes to your repo, the Compare & pull request button will a
 
 Note: you don't have to create the branch on the remote repo, if you do a push of your local branch to the remote repo, the remote repo on github will refresh with your new feature branch you just pushed from local, like `git push origin new-feature`, and github will automatically refresh with `new-feature` showing up on it's site.
 
+## How to Make and Push Changes to _Someone Else's_ Pull Request
+
+If you are on a team and a team member needs help, chances are you will need to help them along and make changes to a number of files and not just a simple single file change in the PR in the GitHub UI, and the features of your code editor such as VSCode may be more helpful, or perhaps you need to change a file your teammate has not touched yet in their PR.  In that case, the below steps help you fetch the remote branch, make changes to that branch, and push your changes which end up showing in your teammate's PR.
+
+1. `git fetch` - to update your remote-tracking branches under `refs/remotes/<remote>/`. This operation never changes any of your own local branches under `refs/heads`, and is safe to do without changing your working copy.
+2. `git checkout origin/branch_name` - check out to the remote branch that the PR is tracked in, ie, your teammate's branch in their PR.
+3. Make your necessary code changes and updates.
+4. `git add` - add all your changes to staging as is normal.
+5. `git commit -m "message about your changes"` - do your typically commit locally
+6. `git push` - This will take your local changes to your teammate's PR branch you are currently on, and push them to the remote repo into the PR of your teammate.
+
+References:  [The difference between `git fetch` and `git pull`](https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch)
+
+> In the simplest terms, `git pull` does a `git fetch` followed by a `git merge`.
+
+> You can do a `git fetch` at any time to update your remote-tracking branches under `refs/remotes/<remote>/`. This operation never changes any of your own local branches under `refs/heads`, and is safe to do without changing your working copy. I have even heard of people running `git fetch` periodically in a cron job in the background (although I wouldn't recommend doing this).
+
+> A git pull is what you would do to bring a local branch up-to-date with its remote version, while also updating your other remote-tracking branches.
+
+> From the Git documentation for git pull:
+
+>> In its default mode, `git pull` is shorthand for `git fetch` followed by `git merge FETCH_HEAD`.
+
 ## Resolving Merge Conflicts
 
 Say you have a feature branch that needs to get caught up with the `main` branch, if you try to merge master into your feature branch then you may run into merge conflicts that need to be resolved. To be more precise, what is a merge conflict:
