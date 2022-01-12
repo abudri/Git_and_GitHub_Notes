@@ -6,12 +6,12 @@
 - [Tag and Release Walk-Through, with a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#tag-and-release-walk-through-with-a-pull-request)
 - [Create a Feature Branch in a Repo Based on a Prior Version/Realease: Checking out a Tag/Version Locally and Pushing a feature Branch to the Remote Repo from There](https://github.com/abudri/Git_and_GitHub_Notes#create-a-feature-branch-in-a-repo-based-on-a-prior-versionrealease-checking-out-a-tagversion-locally-and-pushing-a-feature-branch-to-the-remote-repo-from-there)
 
-[**Pull Requests**](https://github.com/abudri/Git_and_GitHub_Notes#tags-and-releases)
+[**Pull Requests**](https://github.com/abudri/Git_and_GitHub_Notes#pull-requests)
 - [How to Do a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-do-a-pull-request)
 - [How to Make and Push Changes to _Someone Else's_ Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-make-and-push-changes-to-someone-elses-pull-request)
 - [Resolving Merge Conflicts](https://github.com/abudri/Git_and_GitHub_Notes#resolving-merge-conflicts)
 
-[**Other Issues**](https://github.com/abudri/#other-issues)
+[**Other Issues**](https://github.com/abudri/Git_and_GitHub_Notes#other-issues)
 - [How to make a folder a non Git directory?](https://github.com/abudri/Git_and_GitHub_Notes#how-to-make-a-folder-a-non-git-directory)
 - [How to Remove Sensitive Commits From a Repository](https://github.com/abudri/Git_and_GitHub_Notes#how-to-remove-sensitive-commits-from-a-repository)
 - [Pulling Down a Remote Branch from Github and all it's feature branches](https://github.com/abudri/Git_and_GitHub_Notes#pulling-down-a-remote-branch-from-github-and-all-its-feature-branches)
