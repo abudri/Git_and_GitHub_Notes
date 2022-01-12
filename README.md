@@ -7,7 +7,7 @@
 - [Create a Feature Branch in a Repo Based on a Prior Version/Realease: Checking out a Tag/Version Locally and Pushing a feature Branch to the Remote Repo from There](https://github.com/abudri/Git_and_GitHub_Notes#create-a-feature-branch-in-a-repo-based-on-a-prior-versionrealease-checking-out-a-tagversion-locally-and-pushing-a-feature-branch-to-the-remote-repo-from-there)
 
 [**Repo Setup**](https://github.com/abudri/Git_and_GitHub_Notes#repo-setup)
-- [Connecting Local Repo with Commits to a New Remote Repo that has a File/s Already]
+- [Connecting Local Repo with Commits to a New Remote Repo that has a File/s Already](https://github.com/abudri/Git_and_GitHub_Notes#connecting-local-repo-with-commits-to-a-new-remote-repo-that-has-a-files-already)
 
 [**Pull Requests**](https://github.com/abudri/Git_and_GitHub_Notes#pull-requests)
 - [How to Do a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-do-a-pull-request)
