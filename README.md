@@ -1,5 +1,21 @@
 # Git and GitHub Notes
 
+[**Tags and Releases**](https://github.com/abudri/Git_and_GitHub_Notes#tags-and-releases)
+- [Tags vs Releases](https://github.com/abudri/Git_and_GitHub_Notes#tags-vs-releases)
+- [Commands](https://github.com/abudri/Git_and_GitHub_Notes#commands)
+- [Tag and Release Walk-Through, with a Pull Request]
+- [Create a Feature Branch in a Repo Based on a Prior Version/Realease: Checking out a Tag/Version Locally and Pushing a feature Branch to the Remote Repo from There]
+
+[**Pull Requests**](https://github.com/abudri/Git_and_GitHub_Notes#tags-and-releases)
+- [How to Do a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-do-a-pull-request)
+- [How to Make and Push Changes to _Someone Else's_ Pull Request]
+- [Resolving Merge Conflicts]
+
+[**Other Issues**](https://github.com/abudri/#other-issues)
+- [How to Remove Sensitive Commits From a Repository]
+- [Pulling Down a Remote Branch from Github and all it's feature branches]
+
+___
 
 ## Tags and Releases
 
@@ -130,7 +146,9 @@ https://git-scm.com/book/en/v2/Git-Basics-Tagging
 
 [Git and GitHub Beginner Tutorial 7 - Git Tags - what, why, when and how - Raghav Pal](https://www.youtube.com/watch?v=govmXpDGLpo&t=464s)
 
-## How to Do a Pull Request
+## Pull Requests
+
+### How to Do a Pull Request
 
 This presumes you have already set up your remote repo to link to your local repo - do `git remote -v` to check. Also this presupposes you are currently checked out onto your feature branch that you want to create a pull request for.  
 
@@ -151,7 +169,7 @@ Once you push the changes to your repo, the Compare & pull request button will a
 
 Note: you don't have to create the branch on the remote repo, if you do a push of your local branch to the remote repo, the remote repo on github will refresh with your new feature branch you just pushed from local, like `git push origin new-feature`, and github will automatically refresh with `new-feature` showing up on it's site.
 
-## How to Make and Push Changes to _Someone Else's_ Pull Request
+### How to Make and Push Changes to _Someone Else's_ Pull Request
 
 If you are on a team and a team member needs help, chances are you will need to help them along and make changes to a number of files and not just a simple single file change in the PR in the GitHub UI, and the features of your code editor such as VSCode may be more helpful, or perhaps you need to change a file your teammate has not touched yet in their PR.  In that case, the below steps help you fetch the remote branch, make changes to that branch, and push your changes which end up showing in your teammate's PR.
 
@@ -174,7 +192,7 @@ References:  [The difference between `git fetch` and `git pull`](https://stackov
 
 >> In its default mode, `git pull` is shorthand for `git fetch` followed by `git merge FETCH_HEAD`.
 
-## Resolving Merge Conflicts
+### Resolving Merge Conflicts
 
 Say you have a feature branch that needs to get caught up with the `main` branch, if you try to merge master into your feature branch then you may run into merge conflicts that need to be resolved. To be more precise, what is a merge conflict:
 
@@ -224,7 +242,9 @@ git push   # push the changes in your feature branch out to the remote
 ```
 You should be good from there. 
 
-## How to Remove Sensitive Commits From a Repository
+## Other Issues
+
+### How to Remove Sensitive Commits From a Repository
 
 One issue that may come up is committing secrets or senstive data locally and/or remotely - such as on GitHub.  There are a number of ways to go about them.  Here are two.
 
@@ -287,7 +307,7 @@ You'll see you are back to the last/original state of `main`, and your changes a
 
 [Reference](https://www.git-tower.com/learn/git/faq/undo-last-commit/)
 
-## Pulling Down a Remote Branch from Github and *all it's feature branches*
+### Pulling Down a Remote Branch from Github and *all it's feature branches*
 
 [https://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git](https://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git)
 
