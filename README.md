@@ -6,6 +6,9 @@
 - [Tag and Release Walk-Through, with a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#tag-and-release-walk-through-with-a-pull-request)
 - [Create a Feature Branch in a Repo Based on a Prior Version/Realease: Checking out a Tag/Version Locally and Pushing a feature Branch to the Remote Repo from There](https://github.com/abudri/Git_and_GitHub_Notes#create-a-feature-branch-in-a-repo-based-on-a-prior-versionrealease-checking-out-a-tagversion-locally-and-pushing-a-feature-branch-to-the-remote-repo-from-there)
 
+[**Repo Setup**](https://github.com/abudri/Git_and_GitHub_Notes#repo-setup)
+- [Connecting Local Repo with Commits to a New Remote Repo that has a File/s Already]
+
 [**Pull Requests**](https://github.com/abudri/Git_and_GitHub_Notes#pull-requests)
 - [How to Do a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-do-a-pull-request)
 - [How to Make and Push Changes to _Someone Else's_ Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-make-and-push-changes-to-someone-elses-pull-request)
@@ -146,6 +149,71 @@ https://semver.org/
 https://git-scm.com/book/en/v2/Git-Basics-Tagging
 
 [Git and GitHub Beginner Tutorial 7 - Git Tags - what, why, when and how - Raghav Pal](https://www.youtube.com/watch?v=govmXpDGLpo&t=464s)
+
+## Repo Setup
+
+### Connecting Local Repo with Commits to a New Remote Repo that has a File/s Already
+
+I had a repo locally that I had already setup, with files committed and all.  I created a remote repo to connect the remote to, but also happened to create a README.md upon creating the remote repo. They thus had two unrelated histories and threw errors originally.
+
+In any case, in the lines below, I added the GitHub remote repo as a `origin` (remote) to my local repo below, and also checked with a `git remote -v`, and then also changed my local brain name to `main` instead of `master`, which would match my newly created remote repo as well:
+
+```bash
+z@Mac-Users-Apple-Computer abdullahs-microservice % git remote add origin https://github.com/abudri/abdullahs-microservice
+z@Mac-Users-Apple-Computer abdullahs-microservice % git remote -v
+origin	https://github.com/abudri/abdullahs-microservice (fetch)
+origin	https://github.com/abudri/abdullahs-microservice (push)
+z@Mac-Users-Apple-Computer abdullahs-microservice % git branch        
+* master
+z@Mac-Users-Apple-Computer abdullahs-microservice % git branch -m master main
+z@Mac-Users-Apple-Computer abdullahs-microservice % git branch
+* main
+```
+
+To push your changes to the remote repo, you first need to connect by creating a personal access token, and then when trying to push locally to the remote, you will be asked for your username and password.  Your personal access token will serve as your password. See more on creating a personal access token and using it, [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). 
+
+Then I had to set the local `main` branch to track the `origin`'s (the remote repo on GitHub's) `main` branch
+
+```bash
+git branch --set-upstream-to=origin/main main
+```
+
+But a `git pull` alone will not work:
+
+```bash
+z@Mac-Users-Apple-Computer abdullahs-microservice % git pull
+fatal: refusing to merge unrelated histories
+```
+
+The fatal error message was received above. What is needed is the `--allow-unrelated-histories` flag on that, which essentially keeps your local `main`'s files and commits, and also will add the remote's `main` `README.md` file to your local `main` branch:
+
+```bash
+z@Mac-Users-Apple-Computer abdullahs-microservice % git pull --allow-unrelated-histories
+Merge made by the 'recursive' strategy.
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 README.md
+z@Mac-Users-Apple-Computer abdullahs-microservice % git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+```
+
+Finally, with all the local changes on my local `main` still not up in the remote repo at `main` there, I did a `git push` and all was fixed and fine:
+
+```bash
+z@Mac-Users-Apple-Computer abdullahs-microservice % git push 
+Counting objects: 8, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 842 bytes | 842.00 KiB/s, done.
+Total 8 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/abudri/abdullahs-microservice
+   35deb89..5b87546  main -> main
+```
 
 ## Pull Requests
 
