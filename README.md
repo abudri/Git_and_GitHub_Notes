@@ -3,17 +3,18 @@
 [**Tags and Releases**](https://github.com/abudri/Git_and_GitHub_Notes#tags-and-releases)
 - [Tags vs Releases](https://github.com/abudri/Git_and_GitHub_Notes#tags-vs-releases)
 - [Commands](https://github.com/abudri/Git_and_GitHub_Notes#commands)
-- [Tag and Release Walk-Through, with a Pull Request]
-- [Create a Feature Branch in a Repo Based on a Prior Version/Realease: Checking out a Tag/Version Locally and Pushing a feature Branch to the Remote Repo from There]
+- [Tag and Release Walk-Through, with a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#tag-and-release-walk-through-with-a-pull-request)
+- [Create a Feature Branch in a Repo Based on a Prior Version/Realease: Checking out a Tag/Version Locally and Pushing a feature Branch to the Remote Repo from There](https://github.com/abudri/Git_and_GitHub_Notes#create-a-feature-branch-in-a-repo-based-on-a-prior-versionrealease-checking-out-a-tagversion-locally-and-pushing-a-feature-branch-to-the-remote-repo-from-there)
 
 [**Pull Requests**](https://github.com/abudri/Git_and_GitHub_Notes#tags-and-releases)
 - [How to Do a Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-do-a-pull-request)
-- [How to Make and Push Changes to _Someone Else's_ Pull Request]
-- [Resolving Merge Conflicts]
+- [How to Make and Push Changes to _Someone Else's_ Pull Request](https://github.com/abudri/Git_and_GitHub_Notes#how-to-make-and-push-changes-to-someone-elses-pull-request)
+- [Resolving Merge Conflicts](https://github.com/abudri/Git_and_GitHub_Notes#resolving-merge-conflicts)
 
 [**Other Issues**](https://github.com/abudri/#other-issues)
-- [How to Remove Sensitive Commits From a Repository]
-- [Pulling Down a Remote Branch from Github and all it's feature branches]
+- [How to make a folder a non Git directory?](https://github.com/abudri/Git_and_GitHub_Notes#how-to-make-a-folder-a-non-git-directory)
+- [How to Remove Sensitive Commits From a Repository](https://github.com/abudri/Git_and_GitHub_Notes#how-to-remove-sensitive-commits-from-a-repository)
+- [Pulling Down a Remote Branch from Github and all it's feature branches](https://github.com/abudri/Git_and_GitHub_Notes#pulling-down-a-remote-branch-from-github-and-all-its-feature-branches)
 
 ___
 
@@ -243,6 +244,18 @@ git push   # push the changes in your feature branch out to the remote
 You should be good from there. 
 
 ## Other Issues
+
+### How to make a folder a non Git directory?
+
+It's super simple:
+
+```
+rm -rf .git
+```
+
+Removing this folder will make it a non git directory. Maybe accidentally someone previously by doing `git init` initialized a git repository in your folder of your concern..
+
+[Resource](https://stackoverflow.com/questions/47273592/how-to-make-a-folder-a-non-git-directory)
 
 ### How to Remove Sensitive Commits From a Repository
 
